@@ -1,4 +1,5 @@
 resource "aws_s3_bucket" "static" {
+  
   bucket = "examplebuckettftest"
   acl    = "private"
   website {
