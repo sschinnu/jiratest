@@ -5,7 +5,7 @@ on:
     types: [opened]
   workflow_dispatch :
 env :
-  API_URL : "https://scale.app.zscwp.io/"
+  API_URL : "https://scale.api.zscwp.io/"
   AUTH_URL : "https://z-cwp-scale.us.auth0.com"
 jobs:
   test:
