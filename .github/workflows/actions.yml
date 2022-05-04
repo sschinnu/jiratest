@@ -1,11 +1,10 @@
-
 name: Test
 on:
   pull_request:
     types: [opened]
   workflow_dispatch :
 env :
-  API_URL : "https://scale.api.zscwp.io/"
+  API_URL : "https://scale.api.zscwp.io"
   AUTH_URL : "https://z-cwp-scale.us.auth0.com"
 jobs:
   test:
@@ -24,6 +23,6 @@ jobs:
       - run : echo ${{ steps.iac-scan.outputs.sarif_file_path }}
       - name: Upload SARIF file
         if: ${{ success() || failure() && (steps.iac-scan.outputs.sarif_file_path != '') }}
-        uses: github/codeql-action/upload-sarif@v2
+        uses: github/codeql-action/upload-sarif@v1
         with:
           sarif_file: ${{ steps.iac-scan.outputs.sarif_file_path }}
