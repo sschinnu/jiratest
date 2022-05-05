@@ -14,8 +14,8 @@ jobs:
       - uses : ZscalerCWP/Zscaler-IaC-Action@v0.2.1
         id : iac-scan
         with:
-          client_id : ${{ secrets.ZSCANNER_CLIENT_ID }}
-          client_secret : ${{ secrets.ZSCANNER_CLIENT_SECRET }}
+          client_id : ${{ secrets.ZSCANNER_CLIENT_ID_DEV }}
+          client_secret : ${{ secrets.ZSCANNER_CLIENT_SECRET_DEV }}
           fail_build : 'true'
           output_format : 'human+github-sarif'
           region : 'CUSTOM'
