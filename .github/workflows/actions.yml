@@ -5,7 +5,7 @@ on:
   workflow_dispatch :
 env :
   API_URL : "https://int.api.zscwp.io"
-  AUTH_URL : "https://int-auth.zscwp.io/"
+  AUTH_URL : "https://int-auth.zscwp.io"
 jobs:
   test:
     runs-on: ubuntu-latest
