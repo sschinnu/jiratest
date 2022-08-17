@@ -1,10 +1,12 @@
 name: Test
 on:
+  repository_dispatch:
+    types : [run-test]
   pull_request:
     types: [opened]
   workflow_dispatch :
   push :
-    branches:
+    branches:    
       - 'main'
 env :
   API_URL : "https://int.api.zscwp.io"
@@ -20,30 +22,12 @@ jobs:
           client_id : ${{ secrets.ZSCANNER_CLIENT_ID }}
           client_secret : ${{ secrets.ZSCANNER_CLIENT_SECRET }}
           fail_build : 'true'
-          output_format : 'human+github-sarif'
+          output_format : 'json'
           region : 'CUSTOM'
+          log_level : 'debug'
       - run : echo ${{ steps.iac-scan.outputs.sarif_file_path }}
       - name: Upload SARIF file
         if: ${{ success() || failure() && (steps.iac-scan.outputs.sarif_file_path != '') }}
         uses: github/codeql-action/upload-sarif@v1
         with:
           sarif_file: ${{ steps.iac-scan.outputs.sarif_file_path }}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
