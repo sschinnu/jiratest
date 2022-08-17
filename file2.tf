@@ -7,4 +7,13 @@ resource "aws_s3_bucket" "elana" {
   }
 }
 
+resource "aws_s3_bucket" "stephy1" {
+  bucket = "stephy1"
+  acl    = "private"
+  versioning {
+    enabled = true
+    mfa_delete = true
+  }
+}
+
 
